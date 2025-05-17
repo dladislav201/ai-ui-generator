@@ -56,7 +56,7 @@ export const ScrollBarContainer = ({
       resizeObserver.disconnect();
       ta.removeEventListener('input', handleInput);
     };
-  }, [shouldShowScrollbar]);
+  }, [shouldShowScrollbar, scrollAreaRef]);
 
   const onThumbMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
