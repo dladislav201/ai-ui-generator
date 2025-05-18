@@ -1,12 +1,10 @@
-import { PromptField, Table } from '@/components';
+import { HomeComponent, MobileBlocker } from '@/components';
 
 export default function Home() {
   return (
     <main className="flex h-[100dvh]">
-      <div className="relative flex w-full p-3">
-        <PromptField />
-        <Table />
-      </div>
+      <HomeComponent />
+      <MobileBlocker />
     </main>
   );
 }

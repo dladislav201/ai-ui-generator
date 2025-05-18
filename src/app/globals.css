@@ -10,20 +10,23 @@
   --color-grey-500: #888788;
   --color-grey-600: #838386;
   --color-grey-700: #5C5C5C;
+  --color-red: #FF746C;
 }
 
 @theme inline {
   /* color */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-white: var(--color-white);
+  --color-description: var(--color-grey-400);
   --color-placeholder: var(--color-grey-500);
   --color-btn-primary: var(--color-blue-500);
   --color-btn-primary-hover: var(--color-blue-600);
   --color-btn-primary-disabled: var(--color-grey-400);
   --color-caret: var(--color-blue-500);
-  --color-white: var(--color-white);
   --color-scroll-thumb: var(--color-blue-500);
   --color-scroll-thumb-hover: var(--color-blue-600);
+  --color-error: var(--color-red);
 
   /* font */
   --font-inter: var(--font-inter);
@@ -34,6 +37,19 @@
 
   /* border color */
   --color-opacity-10: rgba(0, 0, 0, 0.1);
+
+  /* animation */
+  --animate-spin: spin 1s linear infinite;
+
+  /* keyframes */
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 }
 
 @utility scrollbar-hidden {
@@ -50,6 +66,18 @@
   mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
   mask-repeat: no-repeat;
   mask-size: 100% 100%;
+}
+
+@utility rounded-group {
+  > *:first-child {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+  > *:last-child {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
 }
 
 body {
