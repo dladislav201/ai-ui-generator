@@ -16,7 +16,7 @@ export function useScrollThumb(
     const scrollBarHeight = sa.clientHeight;
     const newThumbH = Math.max(
       (clientHeight / scrollHeight) * scrollBarHeight,
-      30,
+      20,
     );
     const newThumbTop =
       (scrollTop / (scrollHeight - clientHeight)) *

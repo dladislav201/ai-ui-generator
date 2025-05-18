@@ -1,10 +1,17 @@
 'use client';
 
-import { useEffect, useState, useRef, RefObject, useCallback } from 'react';
+import {
+  useEffect,
+  useState,
+  useRef,
+  RefObject,
+  useCallback,
+  useLayoutEffect,
+} from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ScrollThumb } from '@/components';
 import { useScrollThumb } from '@/hooks';
-import clsx from 'clsx';
+import classnames from 'classnames';
 
 interface ScrollBarContainerProps {
   scrollAreaRef: RefObject<HTMLElement | null>;
@@ -38,25 +45,26 @@ export const ScrollBarContainer = ({
     const ta = scrollAreaRef.current;
     if (!ta) return;
 
-    setShowScrollbar(shouldShowScrollbar());
-
-    const resizeObserver = new ResizeObserver(() => {
+    const r = new ResizeObserver(() => {
       setShowScrollbar(shouldShowScrollbar());
+      updateThumb();
+    });
+    r.observe(ta);
+
+    return () => r.disconnect();
+  }, [shouldShowScrollbar, scrollAreaRef, updateThumb]);
+
+  /* eslint-disable react-hooks/exhaustive-deps */
+  useLayoutEffect(() => {
+    setShowScrollbar((prev) => {
+      const need = shouldShowScrollbar();
+      return prev === need ? prev : need;
     });
 
-    resizeObserver.observe(ta);
-
-    const handleInput = () => {
-      setShowScrollbar(shouldShowScrollbar());
-    };
-
-    ta.addEventListener('input', handleInput);
-
-    return () => {
-      resizeObserver.disconnect();
-      ta.removeEventListener('input', handleInput);
-    };
-  }, [shouldShowScrollbar, scrollAreaRef]);
+    const id = requestAnimationFrame(updateThumb);
+    return () => cancelAnimationFrame(id);
+  });
+  /* eslint-enable react-hooks/exhaustive-deps */
 
   const onThumbMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -116,7 +124,7 @@ export const ScrollBarContainer = ({
   };
 
   return (
-    <div className={clsx('flex w-full flex-1', className)}>
+    <div className={classnames('flex w-full flex-1', className)}>
       {children}
       <AnimatePresence>
         {showScrollbar && (
