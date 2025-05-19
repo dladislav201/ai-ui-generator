@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o',
       messages,
-      temperature: 0.5,
+      temperature: 0.6,
       max_tokens: 4096,
       tools: tableFunction,
       tool_choice: { type: 'function', function: { name: 'tableFunction' } },

@@ -15,8 +15,13 @@ function asStringContent(m: Message): Message {
     : { ...m, content: JSON.stringify(m.content) };
 }
 
-export function useChat() {
-  const [history, setHistory] = useState<Message[]>([]);
+export function useChat(systemPrompt: string) {
+  const [history, setHistory] = useState<Message[]>([
+    {
+      role: 'system',
+      content: systemPrompt,
+    },
+  ]);
   const [error, setError] = useState<ChatError | null>(null);
   const [loading, setLoading] = useState(false);
 
