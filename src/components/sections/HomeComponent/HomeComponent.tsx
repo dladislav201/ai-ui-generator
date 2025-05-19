@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { PromptField, Table } from '@/components';
+import { SYSTEM_PROMPT } from '@/data';
 import { Table as TableModel } from '@/models';
 import { useChat } from '@/hooks';
 
@@ -19,7 +20,7 @@ export const HomeComponent = () => {
     actions: ['Inbox', 'Trash2', 'MoreVertical'],
   });
   const [isTableModified, setIsTableModified] = useState(false);
-  const { send, loading, error } = useChat();
+  const { send, loading, error } = useChat(SYSTEM_PROMPT);
 
   const handlePromptSubmit = async (prompt: string) => {
     try {
