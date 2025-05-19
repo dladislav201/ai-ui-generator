@@ -44,6 +44,10 @@
 
   /* animation */
   --animate-spin: spin 1s linear infinite;
+  --animate-slideUpAndFade: slideUpAndFade 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-slideRightAndFade: slideRightAndFade 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-slideDownAndFade: slideDownAndFade 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-slideLeftAndFade: slideLeftAndFade 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 
   /* keyframes */
   @keyframes spin {
@@ -53,6 +57,46 @@
     100% {
       transform: rotate(360deg);
     }
+  }
+  @keyframes slideUpAndFade { 
+    0% {
+      opacity: 0; 
+      transform:translateY(6px)
+    }
+    100% {
+      opacity: 1; 
+      transform:translateY(0)
+    } 
+  }
+  @keyframes slideRightAndFade { 
+    0% {
+      opacity: 0; 
+      transform: translateX(-6px)
+    }
+    100% { 
+      opacity: 1; 
+      transform: translateX(0)
+    } 
+  }
+  @keyframes slideDownAndFade { 
+    0% { 
+      opacity: 0; 
+      transform: translateY(-6px)
+    }
+    100% {
+      opacity: 1; 
+      transform: translateY(0)
+    } 
+  }
+  @keyframes slideLeftAndFade { 
+    0% {
+      opacity: 0; 
+      transform: translateX(6px)
+    }
+    100% {
+      opacity: 1; 
+      transform: translateX(0)
+    } 
   }
 }
 

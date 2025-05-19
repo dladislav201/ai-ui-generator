@@ -37,7 +37,6 @@ export const TableGridAdvanced = ({
             bg-white
             border-b border-opacity-10
             [&>*]:border-b [&>*]:border-opacity-10
-            overflow-hidden
           "
           style={{
             gridTemplateColumns: template,
@@ -50,7 +49,7 @@ export const TableGridAdvanced = ({
                 <div
                   key={colIdx}
                   className={classnames(
-                    'flex items-center gap-2 px-6 text-sm tracking-normal',
+                    'flex items-center gap-2 px-1 text-sm tracking-normal',
                     colIdx === 0 ? 'font-medium' : 'font-normal',
                   )}
                 >
@@ -61,7 +60,7 @@ export const TableGridAdvanced = ({
                 </div>
               ))}
 
-              <div className="flex items-center justify-center gap-2 px-6">
+              <div className="flex items-center justify-center gap-2 px-1">
                 {actions.map((action, k) => (
                   <button
                     key={k}
