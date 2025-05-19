@@ -19,8 +19,9 @@ export const TooltipContent = React.forwardRef<
     className={classnames(
       'z-999 overflow-hidden rounded-xl px-3 py-1.5',
       'shadow-lg will-change-[opacity,transform]',
-      'bg-neutral-900 text-foreground',
+      'bg-white text-foreground border border-opacity-10',
       'text-sm leading-tight',
+      'max-w-[300px]',
       'data-[side=top]:animate-slideDownAndFade',
       'data-[side=right]:animate-slideLeftAndFade',
       'data-[side=bottom]:animate-slideUpAndFade',
