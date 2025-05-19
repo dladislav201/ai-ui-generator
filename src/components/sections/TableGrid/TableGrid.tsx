@@ -1,6 +1,6 @@
 'use client';
 
-import { RenderIcon } from '@/components/ui';
+import { RenderIcon, TooltipProvider, TableCellItem } from '@/components';
 import { TableCell, IconName } from '@/models';
 import classnames from 'classnames';
 
@@ -19,15 +19,12 @@ export const TableGrid = ({
 
   const template = [
     'minmax(0,2fr)',
-    ...Array.from(
-      { length: Math.max(dataCols - 1, 0) },
-      () => 'minmax(96px,max-content)',
-    ),
+    ...(dataCols > 1 ? Array(dataCols - 1).fill('96px') : []),
     'auto',
   ].join(' ');
 
   return (
-    <>
+    <TooltipProvider delayDuration={300}>
       {rows.map((cellsInRow, rowIdx) => (
         <ul
           key={rowIdx}
@@ -45,12 +42,7 @@ export const TableGrid = ({
                 colIdx === 0 ? 'font-medium' : 'font-normal',
               )}
             >
-              <div className="inline-flex items-center gap-2">
-                {cell.icon && (
-                  <RenderIcon iconName={cell.icon} className="h-4 w-4" />
-                )}
-                <span>{cell.name}</span>
-              </div>
+              <TableCellItem cell={cell} />
             </li>
           ))}
 
@@ -70,6 +62,6 @@ export const TableGrid = ({
           </li>
         </ul>
       ))}
-    </>
+    </TooltipProvider>
   );
 };
