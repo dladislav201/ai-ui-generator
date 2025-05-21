@@ -1,19 +1,7 @@
 import { useState } from 'react';
 import { Message, ChatError } from '@/models';
+import { isValidPrompt, asStringContent } from '@/utils';
 import axios from 'axios';
-
-function isValidPrompt(prompt: string) {
-  const t = prompt.trim();
-  return (
-    t.length > 5 && t.split(/\s+/).length >= 2 && /[aeiouyаеиоуяиюєії]/i.test(t)
-  );
-}
-
-function asStringContent(m: Message): Message {
-  return typeof m.content === 'string'
-    ? m
-    : { ...m, content: JSON.stringify(m.content) };
-}
 
 export function useChat(systemPrompt: string) {
   const [history, setHistory] = useState<Message[]>([

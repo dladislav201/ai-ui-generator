@@ -7,3 +7,4 @@ export * from './TableGridAdvanced';
 export * from './HomeComponent';
 export * from './MobileBlocker';
 export * from './TableCellItem';
+export * from './TableVariantList';
