@@ -1,8 +1,9 @@
 'use client';
 
-import { useRef, useState } from 'react';
-import { ScrollBarContainer, Loader } from '@/components';
+import React, { useRef, useState } from 'react';
+import { ScrollBarContainer, Loader, TableVariantList } from '@/components';
 import { AnimatePresence, motion } from 'framer-motion';
+import { Table as TableModel } from '@/models';
 import { ChatError } from '@/models';
 import classnames from 'classnames';
 
@@ -10,9 +11,19 @@ interface PromptFieldProps {
   onSubmit: (prompt: string) => Promise<void>;
   error: ChatError | null;
   loading: boolean;
+  jumpTo: (idx: number) => void;
+  tableHistory: TableModel[];
+  currentIdx: number;
 }
 
-export const PromptField = ({ onSubmit, error, loading }: PromptFieldProps) => {
+export const PromptField = ({
+  onSubmit,
+  error,
+  loading,
+  jumpTo,
+  tableHistory,
+  currentIdx,
+}: PromptFieldProps) => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const [prompt, setPrompt] = useState('');
   const isBtnActive = prompt.trim().length > 0;
@@ -22,7 +33,9 @@ export const PromptField = ({ onSubmit, error, loading }: PromptFieldProps) => {
     if (!trimmed) return;
 
     setPrompt('');
-    await onSubmit(trimmed);
+    try {
+      await onSubmit(trimmed);
+    } catch {}
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -92,6 +105,13 @@ export const PromptField = ({ onSubmit, error, loading }: PromptFieldProps) => {
           </div>
         </ScrollBarContainer>
       </div>
+      {tableHistory.length > 2 && (
+        <TableVariantList
+          jumpTo={jumpTo}
+          tableHistory={tableHistory}
+          currentIdx={currentIdx}
+        />
+      )}
       <AnimatePresence>
         {error && (
           <motion.div
