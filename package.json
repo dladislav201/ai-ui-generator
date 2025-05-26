@@ -1,7 +1,22 @@
 {
-  "name": "app",
-  "version": "0.1.0",
-  "private": true,
+  "name": "ai-ui-generator",
+  "version": "0.1.1",
+  "description": "An AI-powered UI generator that currently builds data tables.",
+  "author": "Dobrodii Vladyslav <dobrodii.vlad200@gmail.com>",
+  "keywords": [
+    "ai",
+    "generator",
+    "components",
+    "frontend",
+    "next",
+    "nextjs",
+    "react",
+    "ui",
+    "ui-kit",
+    "design"
+  ],
+  "license": "MIT",
+  "private": false,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
