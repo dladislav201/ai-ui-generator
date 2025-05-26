@@ -29,12 +29,12 @@ export const Table = ({ data, loading, isTableModified }: TableProps) => {
           exit={{ opacity: 0, scale: 0.95 }}
           transition={{ duration: 0.3 }}
         >
-          <h2 className="mb-2 text-xs leading-[20px] font-medium text-description">
+          <h2 className="mb-2 text-xs leading-[20px] font-light text-description">
             {title}
           </h2>
           <div
             className={classnames('rounded-group', {
-              'opacity-50': !isTableModified,
+              'opacity-70': !isTableModified,
             })}
           >
             <TableGrid
