@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #F4F4F1;
+  --background: #F5F5F7;
   --foreground: #000000;
   --color-white: #ffffff;
   --color-blue-500: #1784EF;
@@ -36,7 +36,7 @@
   --font-inter: var(--font-inter);
   
   /* shadow */
-  --shadow-soft-lg: 0px 16px 28px 0px rgba(0, 0, 0, 0.08);
+  --shadow-soft-lg: 2px 4px 12px rgba(0, 0, 0, 0.078);
   --shadow-inset-1px: inset 0 0 1px rgb(0, 0, 0, 0.11);
 
   /* border color */
@@ -120,13 +120,13 @@
 
 @utility rounded-group {
   > *:first-child {
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
   }
 
   > *:last-child {
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
   }
 }
 
