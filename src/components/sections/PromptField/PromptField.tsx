@@ -47,10 +47,10 @@ export const PromptField = ({
 
   return (
     <div className="z-1 absolute w-[280px]">
-      <div className="z-1 flex w-full h-[230px] bg-white rounded-[12px_28px_28px] shadow-soft-lg">
+      <div className="z-1 flex w-full h-[230px] bg-white rounded-[26px] shadow-soft-lg">
         <ScrollBarContainer
           scrollAreaRef={textAreaRef}
-          className="relative flex-col p-3"
+          className="relative flex-col p-2"
         >
           <textarea
             ref={textAreaRef}
@@ -59,13 +59,13 @@ export const PromptField = ({
             onKeyDown={handleKeyDown}
             className="
               w-full flex-1 text-sm leading-[24px] tracking-normal resize-none text-foreground
-              placeholder-placeholder focus:outline-none caret-caret scrollbar-hidden p-2
+              placeholder-placeholder focus:outline-none caret-caret scrollbar-hidden p-3
             "
             disabled={loading}
             placeholder={
               loading
                 ? 'Generating...'
-                : 'What kind of table do you want to generate?'
+                : 'Let’s set up your table — what kind do you need?'
             }
           />
           <div className="flex justify-end pt-3">
@@ -115,7 +115,7 @@ export const PromptField = ({
       <AnimatePresence>
         {error && (
           <motion.div
-            className="z-0 p-5 mt-3 rounded-[28px] bg-[rgb(255_116_108)]/10 backdrop-blur-lg"
+            className="z-0 p-5 mt-3 rounded-[26px] bg-[rgb(255_116_108)]/10 backdrop-blur-lg"
             initial={{ opacity: 0, y: -20 }}
             animate={{
               opacity: 1,

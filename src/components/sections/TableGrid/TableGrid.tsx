@@ -39,7 +39,7 @@ export const TableGrid = ({
               key={colIdx}
               className={classnames(
                 'flex items-center text-sm tracking-normal h-6',
-                colIdx === 0 ? 'font-medium' : 'font-normal',
+                colIdx === 0 ? 'font-normal' : 'font-light',
               )}
             >
               <TableCellItem cell={cell} />

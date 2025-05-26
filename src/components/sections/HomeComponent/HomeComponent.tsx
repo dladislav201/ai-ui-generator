@@ -9,13 +9,13 @@ import { useChat } from '@/hooks';
 export const HomeComponent = () => {
   const [tableHistory, setTableHistory] = useState<TableModel[]>([
     {
-      title: 'New table',
+      title: 'New Table',
       cells: [
         [
           { name: 'Title', icon: 'ChartColumnIncreasing' },
-          { name: 'Cell' },
-          { name: 'Cell' },
-          { name: 'Cell' },
+          { name: 'Value' },
+          { name: 'Value' },
+          { name: 'Value' },
         ],
       ],
       actions: ['Inbox', 'Trash2', 'MoreVertical'],
@@ -40,7 +40,7 @@ export const HomeComponent = () => {
   }, []);
 
   return (
-    <div className="relative flex w-full p-3">
+    <div className="relative flex w-full p-4">
       <PromptField
         onSubmit={handlePromptSubmit}
         loading={loading}
