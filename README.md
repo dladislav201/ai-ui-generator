@@ -5,7 +5,7 @@
 
 > An experimental project that uses OpenAI's GPT-4o to generate UI-ready table data for a frontend interface. The generated tables include icons, actions, and formatted content, with strict structural and visual rules.
 
-[Live Website](https://ui-generator-one.vercel.app)
+[Live Website](https://ai.dladislav.com)
 
 ![Website Screenshot](public/home-page-screenshot.png)
 
